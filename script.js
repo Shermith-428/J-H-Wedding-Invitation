@@ -1,3 +1,6 @@
+// ── TWEMOJI ──
+twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 

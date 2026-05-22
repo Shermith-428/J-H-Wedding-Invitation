@@ -728,6 +728,14 @@ section {
   min-height: 24px;
 }
 
+/* ── TWEMOJI ── */
+img.emoji {
+  height: 1.1em;
+  width: 1.1em;
+  vertical-align: -0.15em;
+  display: inline-block;
+}
+
 /* ── FOOTER ── */
 footer {
   background: var(--burgundy-dk);
