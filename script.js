@@ -1,48 +1,24 @@
 // ── TWEMOJI ──
 twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
 
-// ── MUSIC PLAYER (YouTube IFrame API) ──
-const YOUTUBE_VIDEO_ID = 'h7lMNnMBMEo';
-
+// ── MUSIC PLAYER ──
+const audio     = document.getElementById('audio-player');
 const musicBtn  = document.getElementById('music-btn');
 const iconPlay  = document.getElementById('icon-play');
 const iconPause = document.getElementById('icon-pause');
 
-let ytPlayer  = null;
-let isPlaying = false;
-let apiReady  = false;
-
-// Load YouTube IFrame API script
-const tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
-document.head.appendChild(tag);
-
-// Called automatically by YouTube API when ready
-window.onYouTubeIframeAPIReady = function () {
-  apiReady = true;
-  ytPlayer = new YT.Player('yt-player', {
-    videoId: YOUTUBE_VIDEO_ID,
-    playerVars: { autoplay: 0, loop: 1, playlist: YOUTUBE_VIDEO_ID, controls: 0, rel: 0 },
-    events: {
-      onReady: () => {},
-      onStateChange: (e) => {
-        if (e.data === YT.PlayerState.ENDED) ytPlayer.playVideo();
-      }
-    }
-  });
-};
-
 musicBtn.addEventListener('click', () => {
-  if (!apiReady || !ytPlayer || typeof ytPlayer.playVideo !== 'function') return;
-  if (isPlaying) {
-    ytPlayer.pauseVideo();
+  if (audio.paused) {
+    audio.play();
+    iconPlay.style.display  = 'none';
+    iconPause.style.display = 'inline';
+    musicBtn.classList.add('playing');
   } else {
-    ytPlayer.playVideo();
+    audio.pause();
+    iconPlay.style.display  = 'inline';
+    iconPause.style.display = 'none';
+    musicBtn.classList.remove('playing');
   }
-  isPlaying = !isPlaying;
-  iconPlay.style.display  = isPlaying ? 'none'   : 'inline';
-  iconPause.style.display = isPlaying ? 'inline' : 'none';
-  musicBtn.classList.toggle('playing', isPlaying);
 });
 
 // ── HAMBURGER NAV ──

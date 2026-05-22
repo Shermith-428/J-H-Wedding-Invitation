@@ -933,19 +933,6 @@ section {
   opacity: 0.85;
 }
 
-#yt-container {
-  position: fixed;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-  bottom: 0;
-  right: 0;
-}
-
-#yt-player { width: 100%; height: 100%; border: none; }
-
 /* ── TWEMOJI ── */
 img.emoji {
   height: 1.1em;
