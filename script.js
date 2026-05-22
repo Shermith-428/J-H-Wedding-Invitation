@@ -1,6 +1,42 @@
 // ── TWEMOJI ──
 twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
 
+// ── MUSIC PLAYER ──
+const YOUTUBE_VIDEO_ID = 'h7lMNnMBMEo'; // Ordinary - Alex Warren
+
+const ytPlayer  = document.getElementById('yt-player');
+const musicBtn  = document.getElementById('music-btn');
+const iconPlay  = document.getElementById('icon-play');
+const iconPause = document.getElementById('icon-pause');
+
+let playerReady = false;
+let isPlaying   = false;
+let ytWin       = null;
+
+function loadPlayer() {
+  ytPlayer.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0`;
+  ytWin = ytPlayer.contentWindow;
+  playerReady = true;
+}
+
+function sendCmd(cmd) {
+  if (!ytWin) return;
+  ytWin.postMessage(JSON.stringify({ event: 'command', func: cmd, args: [] }), '*');
+}
+
+musicBtn.addEventListener('click', () => {
+  if (!playerReady) {
+    loadPlayer();
+    isPlaying = true;
+  } else {
+    isPlaying ? sendCmd('pauseVideo') : sendCmd('playVideo');
+    isPlaying = !isPlaying;
+  }
+  iconPlay.style.display  = isPlaying ? 'none'  : 'inline';
+  iconPause.style.display = isPlaying ? 'inline' : 'none';
+  musicBtn.classList.toggle('playing', isPlaying);
+});
+
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
