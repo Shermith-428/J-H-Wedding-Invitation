@@ -45,6 +45,26 @@ musicBtn.addEventListener('click', () => {
   musicBtn.classList.toggle('playing', isPlaying);
 });
 
+// ── HAMBURGER NAV ──
+const hamburger = document.getElementById('nav-hamburger');
+const navMenu   = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
