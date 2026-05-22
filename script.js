@@ -1,38 +1,46 @@
 // ── TWEMOJI ──
 twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
 
-// ── MUSIC PLAYER ──
-const YOUTUBE_VIDEO_ID = 'h7lMNnMBMEo'; // Ordinary - Alex Warren
+// ── MUSIC PLAYER (YouTube IFrame API) ──
+const YOUTUBE_VIDEO_ID = 'h7lMNnMBMEo';
 
-const ytPlayer  = document.getElementById('yt-player');
 const musicBtn  = document.getElementById('music-btn');
 const iconPlay  = document.getElementById('icon-play');
 const iconPause = document.getElementById('icon-pause');
 
-let playerReady = false;
-let isPlaying   = false;
-let ytWin       = null;
+let ytPlayer  = null;
+let isPlaying = false;
+let apiReady  = false;
 
-function loadPlayer() {
-  ytPlayer.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0&mute=0`;
-  ytWin = ytPlayer.contentWindow;
-  playerReady = true;
-}
+// Load YouTube IFrame API script
+const tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
 
-function sendCmd(cmd) {
-  if (!ytWin) return;
-  ytWin.postMessage(JSON.stringify({ event: 'command', func: cmd, args: [] }), '*');
-}
+// Called automatically by YouTube API when ready
+window.onYouTubeIframeAPIReady = function () {
+  apiReady = true;
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: YOUTUBE_VIDEO_ID,
+    playerVars: { autoplay: 0, loop: 1, playlist: YOUTUBE_VIDEO_ID, controls: 0, rel: 0 },
+    events: {
+      onReady: () => {},
+      onStateChange: (e) => {
+        if (e.data === YT.PlayerState.ENDED) ytPlayer.playVideo();
+      }
+    }
+  });
+};
 
 musicBtn.addEventListener('click', () => {
-  if (!playerReady) {
-    loadPlayer();
-    isPlaying = true;
+  if (!apiReady || !ytPlayer || typeof ytPlayer.playVideo !== 'function') return;
+  if (isPlaying) {
+    ytPlayer.pauseVideo();
   } else {
-    isPlaying ? sendCmd('pauseVideo') : sendCmd('playVideo');
-    isPlaying = !isPlaying;
+    ytPlayer.playVideo();
   }
-  iconPlay.style.display  = isPlaying ? 'none'  : 'inline';
+  isPlaying = !isPlaying;
+  iconPlay.style.display  = isPlaying ? 'none'   : 'inline';
   iconPause.style.display = isPlaying ? 'inline' : 'none';
   musicBtn.classList.toggle('playing', isPlaying);
 });

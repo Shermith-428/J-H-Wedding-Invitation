@@ -509,45 +509,146 @@ section {
   color: var(--burgundy);
 }
 
-/* ── GALLERY ── */
-#gallery { background: var(--burgundy-dk); }
+/* ── GALLERY BUBBLES ── */
+#gallery {
+  background: var(--burgundy-dk);
+  overflow: hidden;
+  padding: 60px 0 80px;
+}
 
+#gallery .section-inner { padding: 0 24px; }
 #gallery .section-label { color: rgba(212,175,138,0.75); }
-#gallery h2 { color: var(--silver-lt); }
-#gallery .divider-line { background: linear-gradient(to right, transparent, rgba(212,175,138,0.4), transparent); }
+#gallery h2             { color: var(--silver-lt); }
+#gallery .divider-line  { background: linear-gradient(to right, transparent, rgba(212,175,138,0.4), transparent); }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 260px;
-  gap: 10px;
+.bubble-stage {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  overflow: hidden;
 }
 
-.gallery-item { overflow: hidden; position: relative; }
-.gallery-item.tall { grid-row: span 2; }
+/* sizes */
+.bubble[data-size="large"]  { --d: 220px; }
+.bubble[data-size="medium"] { --d: 160px; }
+.bubble[data-size="small"]  { --d: 110px; }
 
-.gallery-item::after {
-  content: '';
+.bubble {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(61,10,20,0.55), transparent 55%);
-  opacity: 0;
-  transition: opacity 0.4s;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  will-change: transform;
+  box-shadow:
+    0 0 0 2px rgba(212,175,138,0.25),
+    0 8px 32px rgba(0,0,0,0.45),
+    inset 0 0 20px rgba(212,175,138,0.08);
+  transition: box-shadow 0.4s, transform 0.4s;
 }
 
-.gallery-item:hover::after { opacity: 1; }
+.bubble:hover {
+  box-shadow:
+    0 0 0 3px rgba(212,175,138,0.7),
+    0 16px 48px rgba(0,0,0,0.6),
+    inset 0 0 30px rgba(212,175,138,0.15);
+  z-index: 10;
+}
 
-.gallery-item img {
+.bubble img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease, filter 0.6s ease;
-  filter: brightness(0.85) saturate(0.88);
+  border-radius: 50%;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: brightness(0.82) saturate(0.85);
+  pointer-events: none;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.06);
-  filter: brightness(1) saturate(1.05);
+.bubble:hover img {
+  transform: scale(1.12);
+  filter: brightness(1) saturate(1.1);
+}
+
+/* shimmer ring */
+.bubble-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  background: conic-gradient(from 0deg, rgba(212,175,138,0.6), transparent 40%, rgba(212,175,138,0.6) 70%, transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: ringRotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes ringRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* individual float animations — each bubble gets unique drift */
+@keyframes floatA {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  25%      { transform: translate(12px,-18px) rotate(1.5deg); }
+  50%      { transform: translate(-8px,-28px) rotate(-1deg); }
+  75%      { transform: translate(6px,-12px) rotate(0.8deg); }
+}
+@keyframes floatB {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  30%      { transform: translate(-14px,-22px) rotate(-2deg); }
+  60%      { transform: translate(10px,-16px) rotate(1.2deg); }
+}
+@keyframes floatC {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  40%      { transform: translate(16px,-14px) rotate(2deg); }
+  70%      { transform: translate(-6px,-24px) rotate(-1.5deg); }
+}
+@keyframes floatD {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  20%      { transform: translate(-10px,-20px) rotate(-1deg); }
+  55%      { transform: translate(14px,-10px) rotate(1.8deg); }
+  80%      { transform: translate(-4px,-26px) rotate(-0.5deg); }
+}
+
+.bubble:nth-child(1) { top: 8%;  left: 4%;  animation: floatA 7s ease-in-out infinite; }
+.bubble:nth-child(2) { top: 5%;  left: 32%; animation: floatB 9s ease-in-out infinite 1s; }
+.bubble:nth-child(3) { top: 12%; left: 60%; animation: floatC 6s ease-in-out infinite 0.5s; }
+.bubble:nth-child(4) { top: 44%; left: 14%; animation: floatD 8s ease-in-out infinite 2s; }
+.bubble:nth-child(5) { top: 42%; left: 42%; animation: floatA 10s ease-in-out infinite 1.5s; }
+.bubble:nth-child(6) { top: 48%; left: 72%; animation: floatB 7s ease-in-out infinite 3s; }
+.bubble:nth-child(7) { top: 76%; left: 28%; animation: floatC 9s ease-in-out infinite 0.8s; }
+
+/* responsive bubble stage */
+@media (max-width: 768px) {
+  .bubble-stage { height: 560px; }
+  .bubble[data-size="large"]  { --d: 160px; }
+  .bubble[data-size="medium"] { --d: 120px; }
+  .bubble[data-size="small"]  { --d: 85px; }
+  .bubble:nth-child(1) { top: 4%;  left: 2%; }
+  .bubble:nth-child(2) { top: 3%;  left: 36%; }
+  .bubble:nth-child(3) { top: 8%;  left: 66%; }
+  .bubble:nth-child(4) { top: 42%; left: 8%; }
+  .bubble:nth-child(5) { top: 40%; left: 40%; }
+  .bubble:nth-child(6) { top: 44%; left: 70%; }
+  .bubble:nth-child(7) { top: 74%; left: 24%; }
+}
+
+@media (max-width: 480px) {
+  .bubble-stage { height: 520px; }
+  .bubble[data-size="large"]  { --d: 130px; }
+  .bubble[data-size="medium"] { --d: 100px; }
+  .bubble[data-size="small"]  { --d: 72px; }
+  .bubble:nth-child(1) { top: 2%;  left: 1%; }
+  .bubble:nth-child(2) { top: 2%;  left: 38%; }
+  .bubble:nth-child(3) { top: 6%;  left: 68%; }
+  .bubble:nth-child(4) { top: 40%; left: 4%; }
+  .bubble:nth-child(5) { top: 38%; left: 38%; }
+  .bubble:nth-child(6) { top: 42%; left: 68%; }
+  .bubble:nth-child(7) { top: 72%; left: 20%; }
 }
 
 /* ── RSVP ── */
@@ -864,10 +965,7 @@ footer {
   .timeline-item:hover .timeline-dot { transform: scale(1.15); }
   .timeline-card { padding: 22px 18px; }
 
-  .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 180px; gap: 8px; }
-  .gallery-item.tall { grid-row: span 1; }
-
-  .heart-divider { padding: 10px 18px; }
+.heart-divider { padding: 10px 18px; }
   .hd-line { max-width: 100px; }
 
   footer { padding: 40px 18px 28px; }
@@ -892,8 +990,6 @@ footer {
   .section-inner h2 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
   .story-intro { font-size: 0.95rem; }
 
-  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 130px; gap: 6px; }
-
-  #rsvp-form button { padding: 13px 32px; }
+#rsvp-form button { padding: 13px 32px; }
   .footer-names { font-size: 1.5rem; }
 }
