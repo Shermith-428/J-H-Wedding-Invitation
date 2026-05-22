@@ -68,14 +68,13 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
 
   const data = new FormData(this);
   const payload = {
-    name:       data.get('name'),
-    email:      data.get('email'),
-    phone:      data.get('phone'),
-    attendance: data.get('attendance'),
-    guests:     data.get('guests'),
-    meal:       data.get('meal'),
-    message:    data.get('message'),
-    timestamp:  new Date().toLocaleString()
+    name:        data.get('name'),
+    party_names: data.get('party_names'),
+    attendance:  data.get('attendance'),
+    address:     data.get('address'),
+    phone:       data.get('phone'),
+    children:    data.get('children'),
+    timestamp:   new Date().toLocaleString()
   };
 
   try {

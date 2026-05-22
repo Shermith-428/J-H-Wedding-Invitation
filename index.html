@@ -34,22 +34,47 @@
       <p class="home-date reveal-up delay-2">08 · 08 · 2026</p>
       <p class="home-venue reveal-up delay-2">Villa by the Edge Glasshouse · Wattala</p>
 
+      <!-- Professional swan pair facing each other -->
       <div class="swan-pair reveal-up delay-3" aria-hidden="true">
-        <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg">
-          <g class="swan-left">
-            <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#d4af8a" opacity="0.92"/>
-            <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#d4af8a" opacity="0.92"/>
-            <circle cx="29" cy="37" r="3.5" fill="#d4af8a"/>
-            <path d="M29,37 Q24,33 20,35" stroke="#d4af8a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left swan facing right -->
+          <g class="swan-left" transform="translate(10,5)">
+            <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a"/>
+            <path d="M42,70 C48,74 56,76 64,72 C72,68 76,60 74,52 C72,46 66,43 60,46 C56,52 52,60 48,68 Z" fill="#d4af8a"/>
+            <!-- neck curve -->
+            <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- head -->
+            <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a"/>
+            <!-- beak -->
+            <path d="M50,27 L58,25 L56,29 Z" fill="#c49a6c"/>
+            <!-- eye -->
+            <circle cx="46" cy="26" r="1.5" fill="#3d0a14"/>
+            <!-- wing detail -->
+            <path d="M20,75 C30,70 42,68 52,72" stroke="#c49a6c" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M22,80 C32,76 44,74 54,77" stroke="#c49a6c" stroke-width="1" fill="none" opacity="0.4"/>
+            <!-- tail -->
+            <path d="M10,95 C8,88 6,82 10,78 C14,74 18,78 18,85" fill="#d4af8a" opacity="0.8"/>
           </g>
-          <g class="swan-right">
-            <path d="M210,85 Q225,60 212,42 Q200,26 182,32 Q168,37 170,54 Q172,66 186,70 Q174,62 168,50 Q162,36 178,28 Q196,20 210,38 Q226,58 212,83 Z" fill="#d4af8a" opacity="0.92"/>
-            <path d="M186,70 Q174,78 162,72 Q152,66 155,54 Q158,45 167,47 Q171,54 173,65 Z" fill="#d4af8a" opacity="0.92"/>
-            <circle cx="211" cy="37" r="3.5" fill="#d4af8a"/>
-            <path d="M211,37 Q216,33 220,35" stroke="#d4af8a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Right swan facing left (mirrored) -->
+          <g class="swan-right" transform="translate(270,5) scale(-1,1)">
+            <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a"/>
+            <path d="M42,70 C48,74 56,76 64,72 C72,68 76,60 74,52 C72,46 66,43 60,46 C56,52 52,60 48,68 Z" fill="#d4af8a"/>
+            <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a"/>
+            <path d="M50,27 L58,25 L56,29 Z" fill="#c49a6c"/>
+            <circle cx="46" cy="26" r="1.5" fill="#3d0a14"/>
+            <path d="M20,75 C30,70 42,68 52,72" stroke="#c49a6c" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M22,80 C32,76 44,74 54,77" stroke="#c49a6c" stroke-width="1" fill="none" opacity="0.4"/>
+            <path d="M10,95 C8,88 6,82 10,78 C14,74 18,78 18,85" fill="#d4af8a" opacity="0.8"/>
           </g>
-          <path d="M60,92 Q90,86 120,89 Q150,92 180,87" stroke="#d4af8a" stroke-width="1" fill="none" opacity="0.45"/>
-          <path d="M50,96 Q85,90 120,93 Q155,96 190,91" stroke="#d4af8a" stroke-width="0.6" fill="none" opacity="0.25"/>
+
+          <!-- Heart between them -->
+          <path d="M140,52 C140,52 136,46 132,48 C128,50 128,56 132,60 L140,68 L148,60 C152,56 152,50 148,48 C144,46 140,52 140,52 Z" fill="#d4af8a" opacity="0.7"/>
+
+          <!-- Water ripple -->
+          <path d="M30,105 Q80,100 140,103 Q200,106 250,101" stroke="#d4af8a" stroke-width="1" fill="none" opacity="0.35"/>
+          <path d="M40,110 Q90,106 140,108 Q190,110 240,106" stroke="#d4af8a" stroke-width="0.6" fill="none" opacity="0.2"/>
         </svg>
       </div>
 
@@ -70,20 +95,25 @@
 
   <!-- SWAN DIVIDER -->
   <div class="swan-divider cream" aria-hidden="true">
-    <svg viewBox="0 0 340 70" xmlns="http://www.w3.org/2000/svg">
-      <line x1="20" y1="35" x2="130" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.4"/>
-      <g transform="translate(148,4) scale(0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#6b1a2a" opacity="0.22"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#6b1a2a" opacity="0.22"/>
-        <circle cx="29" cy="37" r="3.5" fill="#6b1a2a" opacity="0.22"/>
+    <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="30" x2="155" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.45"/>
+      <circle cx="160" cy="30" r="2" fill="#d4af8a" opacity="0.4"/>
+      <!-- small left swan -->
+      <g transform="translate(172,8) scale(0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#6b1a2a" opacity="0.28"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#6b1a2a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.28"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#6b1a2a" opacity="0.28"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#6b1a2a" opacity="0.28"/>
       </g>
-      <g transform="translate(172,4) scale(-0.55,0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#6b1a2a" opacity="0.22"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#6b1a2a" opacity="0.22"/>
-        <circle cx="29" cy="37" r="3.5" fill="#6b1a2a" opacity="0.22"/>
+      <!-- small right swan -->
+      <g transform="translate(228,8) scale(-0.32,0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#6b1a2a" opacity="0.28"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#6b1a2a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.28"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#6b1a2a" opacity="0.28"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#6b1a2a" opacity="0.28"/>
       </g>
-      <line x1="210" y1="35" x2="320" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.4"/>
-      <circle cx="170" cy="35" r="2" fill="#d4af8a" opacity="0.5"/>
+      <circle cx="240" cy="30" r="2" fill="#d4af8a" opacity="0.4"/>
+      <line x1="245" y1="30" x2="390" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.45"/>
     </svg>
   </div>
 
@@ -93,9 +123,7 @@
       <p class="section-label reveal-up">Our Story</p>
       <h2 class="reveal-up">Two Hearts, One Journey</h2>
       <div class="divider-line reveal-up"></div>
-
       <p class="story-intro reveal-up">Two years ago, a single moment quietly changed everything — and neither of them would have it any other way.</p>
-
       <div class="story-timeline">
         <div class="timeline-item reveal-left">
           <div class="timeline-dot"><span>✦</span></div>
@@ -126,7 +154,6 @@
           </div>
         </div>
       </div>
-
       <div class="story-closing reveal-up">
         <p><em>Here's to Jason & Hossana ❤️</em></p>
       </div>
@@ -135,20 +162,23 @@
 
   <!-- SWAN DIVIDER -->
   <div class="swan-divider burgundy" aria-hidden="true">
-    <svg viewBox="0 0 340 70" xmlns="http://www.w3.org/2000/svg">
-      <line x1="20" y1="35" x2="130" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.35"/>
-      <g transform="translate(148,4) scale(0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#d4af8a" opacity="0.55"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#d4af8a" opacity="0.55"/>
-        <circle cx="29" cy="37" r="3.5" fill="#d4af8a" opacity="0.55"/>
+    <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="30" x2="155" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.35"/>
+      <circle cx="160" cy="30" r="2" fill="#d4af8a" opacity="0.45"/>
+      <g transform="translate(172,8) scale(0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a" opacity="0.6"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a" opacity="0.6"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#d4af8a" opacity="0.6"/>
       </g>
-      <g transform="translate(172,4) scale(-0.55,0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#d4af8a" opacity="0.55"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#d4af8a" opacity="0.55"/>
-        <circle cx="29" cy="37" r="3.5" fill="#d4af8a" opacity="0.55"/>
+      <g transform="translate(228,8) scale(-0.32,0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a" opacity="0.6"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a" opacity="0.6"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#d4af8a" opacity="0.6"/>
       </g>
-      <line x1="210" y1="35" x2="320" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.35"/>
-      <circle cx="170" cy="35" r="2" fill="#d4af8a" opacity="0.5"/>
+      <circle cx="240" cy="30" r="2" fill="#d4af8a" opacity="0.45"/>
+      <line x1="245" y1="30" x2="390" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.35"/>
     </svg>
   </div>
 
@@ -172,20 +202,23 @@
 
   <!-- SWAN DIVIDER -->
   <div class="swan-divider cream" aria-hidden="true">
-    <svg viewBox="0 0 340 70" xmlns="http://www.w3.org/2000/svg">
-      <line x1="20" y1="35" x2="130" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.4"/>
-      <g transform="translate(148,4) scale(0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#6b1a2a" opacity="0.2"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#6b1a2a" opacity="0.2"/>
-        <circle cx="29" cy="37" r="3.5" fill="#6b1a2a" opacity="0.2"/>
+    <svg viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="30" x2="155" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.45"/>
+      <circle cx="160" cy="30" r="2" fill="#d4af8a" opacity="0.4"/>
+      <g transform="translate(172,8) scale(0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#6b1a2a" opacity="0.22"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#6b1a2a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.22"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#6b1a2a" opacity="0.22"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#6b1a2a" opacity="0.22"/>
       </g>
-      <g transform="translate(172,4) scale(-0.55,0.55)">
-        <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#6b1a2a" opacity="0.2"/>
-        <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#6b1a2a" opacity="0.2"/>
-        <circle cx="29" cy="37" r="3.5" fill="#6b1a2a" opacity="0.2"/>
+      <g transform="translate(228,8) scale(-0.32,0.32)">
+        <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#6b1a2a" opacity="0.22"/>
+        <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#6b1a2a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.22"/>
+        <ellipse cx="43" cy="28" rx="8" ry="6" fill="#6b1a2a" opacity="0.22"/>
+        <path d="M50,27 L58,25 L56,29 Z" fill="#6b1a2a" opacity="0.22"/>
       </g>
-      <line x1="210" y1="35" x2="320" y2="35" stroke="#d4af8a" stroke-width="0.6" opacity="0.4"/>
-      <circle cx="170" cy="35" r="2" fill="#d4af8a" opacity="0.5"/>
+      <circle cx="240" cy="30" r="2" fill="#d4af8a" opacity="0.4"/>
+      <line x1="245" y1="30" x2="390" y2="30" stroke="#d4af8a" stroke-width="0.7" opacity="0.45"/>
     </svg>
   </div>
 
@@ -197,54 +230,48 @@
       <div class="divider-line reveal-up"></div>
       <p class="rsvp-note reveal-up">Kindly respond by <strong>1st July 2026</strong></p>
       <form id="rsvp-form" class="reveal-up">
-        <div class="form-row">
-          <div class="form-field">
-            <input type="text" name="name" id="f-name" placeholder=" " required />
-            <label for="f-name">Full Name</label>
-          </div>
-          <div class="form-field">
-            <input type="email" name="email" id="f-email" placeholder=" " required />
-            <label for="f-email">Email Address</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <input type="tel" name="phone" id="f-phone" placeholder=" " />
-            <label for="f-phone">Phone Number</label>
-          </div>
-          <div class="form-field select-wrap">
-            <select name="attendance" id="f-attend" required>
-              <option value="" disabled selected></option>
-              <option value="Yes">Joyfully Accepts</option>
-              <option value="No">Regretfully Declines</option>
-            </select>
-            <label for="f-attend">Will you attend?</label>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field select-wrap">
-            <select name="guests" id="f-guests">
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-            </select>
-            <label for="f-guests">Number of Guests</label>
-          </div>
-          <div class="form-field select-wrap">
-            <select name="meal" id="f-meal" required>
-              <option value="" disabled selected></option>
-              <option value="Vegetarian">Vegetarian</option>
-              <option value="Non-Vegetarian">Non-Vegetarian</option>
-              <option value="Vegan">Vegan</option>
-            </select>
-            <label for="f-meal">Meal Preference</label>
-          </div>
-        </div>
+
         <div class="form-field full">
-          <textarea name="message" id="f-msg" placeholder=" " rows="3"></textarea>
-          <label for="f-msg">Message for the couple (optional)</label>
+          <input type="text" name="name" id="f-name" placeholder=" " required />
+          <label for="f-name">What is your name? *</label>
         </div>
+
+        <div class="form-field full">
+          <textarea name="party_names" id="f-party" placeholder=" " rows="3" required></textarea>
+          <label for="f-party">Please list the full names of everyone in your party who is responding. *</label>
+        </div>
+
+        <div class="form-field full radio-group">
+          <p class="radio-label">Can you attend? *</p>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Yes, I'll be there" required />
+            <span>Yes, I'll be there 💃🕺</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Sorry, can't make it" />
+            <span>Sorry, can't make it 🙁</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Celebrating from afar" />
+            <span>Celebrating from afar 🥳</span>
+          </label>
+        </div>
+
+        <div class="form-field full">
+          <textarea name="address" id="f-address" placeholder=" " rows="2"></textarea>
+          <label for="f-address">Please confirm your current physical mailing address</label>
+        </div>
+
+        <div class="form-field full">
+          <input type="tel" name="phone" id="f-phone" placeholder=" " required />
+          <label for="f-phone">Your mobile number *</label>
+        </div>
+
+        <div class="form-field full">
+          <textarea name="children" id="f-children" placeholder=" " rows="2" required></textarea>
+          <label for="f-children">Are you bringing children? If so, please list their names and ages. *</label>
+        </div>
+
         <button type="submit"><span>Send RSVP</span></button>
         <p id="form-status"></p>
       </form>
@@ -254,17 +281,23 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-swans" aria-hidden="true">
-      <svg viewBox="0 0 160 70" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(20,5) scale(0.45)">
-          <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#d4af8a" opacity="0.35"/>
-          <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#d4af8a" opacity="0.35"/>
-          <circle cx="29" cy="37" r="3.5" fill="#d4af8a" opacity="0.35"/>
+      <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+        <!-- left swan -->
+        <g transform="translate(18,5) scale(0.38)">
+          <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a" opacity="0.4"/>
+          <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a" opacity="0.4"/>
+          <path d="M50,27 L58,25 L56,29 Z" fill="#d4af8a" opacity="0.4"/>
         </g>
-        <g transform="translate(100,5) scale(-0.45,0.45)">
-          <path d="M30,85 Q15,60 28,42 Q40,26 58,32 Q72,37 70,54 Q68,66 54,70 Q66,62 72,50 Q78,36 62,28 Q44,20 30,38 Q14,58 28,83 Z" fill="#d4af8a" opacity="0.35"/>
-          <path d="M54,70 Q66,78 78,72 Q88,66 85,54 Q82,45 73,47 Q69,54 67,65 Z" fill="#d4af8a" opacity="0.35"/>
-          <circle cx="29" cy="37" r="3.5" fill="#d4af8a" opacity="0.35"/>
+        <!-- right swan -->
+        <g transform="translate(182,5) scale(-0.38,0.38)">
+          <path d="M10,95 C10,95 5,75 8,60 C11,45 18,35 28,28 C38,21 50,20 58,26 C66,32 68,42 64,52 C60,62 50,68 42,70 C50,65 58,58 60,48 C62,38 58,30 50,26 C42,22 32,24 24,32 C16,40 12,55 14,72 C16,82 18,90 18,95 Z" fill="#d4af8a" opacity="0.4"/>
+          <path d="M18,95 C18,95 16,80 20,65 C24,50 32,38 40,32" stroke="#d4af8a" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <ellipse cx="43" cy="28" rx="8" ry="6" fill="#d4af8a" opacity="0.4"/>
+          <path d="M50,27 L58,25 L56,29 Z" fill="#d4af8a" opacity="0.4"/>
         </g>
+        <!-- heart -->
+        <path d="M100,38 C100,38 97,33 94,35 C91,37 91,41 94,44 L100,50 L106,44 C109,41 109,37 106,35 C103,33 100,38 100,38 Z" fill="#d4af8a" opacity="0.5"/>
       </svg>
     </div>
     <p class="footer-names">Jason <span>&</span> Hossana</p>

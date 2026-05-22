@@ -583,9 +583,63 @@ section {
   pointer-events: none;
 }
 
+.radio-group {
+  background: var(--cream);
+  border: 1px solid rgba(107,26,42,0.2);
+  padding: 20px 20px 16px;
+}
+
+.radio-label {
+  font-size: 0.72rem;
+  color: var(--burgundy);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(107,26,42,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.3s;
+  padding: 0;
+  background: #fff;
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: var(--burgundy);
+}
+
+.radio-option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  background: var(--burgundy);
+  border-radius: 50%;
+}
+
+.radio-option span {
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  font-weight: 300;
+}
+
+/* ── RSVP BUTTON ── */
 #rsvp-form button {
-  align-self: center;
-  padding: 16px 56px;
   background: transparent;
   color: var(--burgundy-dk);
   border: 1px solid var(--burgundy-dk);
@@ -624,6 +678,66 @@ section {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 1rem;
+}
+
+.radio-group {
+  background: var(--cream);
+  border: 1px solid rgba(107,26,42,0.18);
+  border-bottom: 2px solid rgba(107,26,42,0.18);
+  padding: 18px 16px 14px;
+}
+
+.radio-label {
+  font-size: 0.72rem;
+  color: var(--burgundy);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  font-weight: 400;
+  display: block;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.radio-option:last-child { margin-bottom: 0; }
+
+.radio-option input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(107,26,42,0.35);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.3s;
+  padding: 0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"]:checked {
+  border-color: var(--burgundy);
+}
+
+.radio-option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  background: var(--burgundy);
+  border-radius: 50%;
+}
+
+.radio-option span {
+  font-size: 0.8rem;
+  color: var(--text-dark);
+  font-weight: 300;
 }
 
 /* ── FOOTER ── */
