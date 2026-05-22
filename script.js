@@ -1,34 +1,36 @@
 // ── MUSIC PLAYER ──
-const audio = new Audio();
-audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'; // placeholder
-audio.loop = true;
-audio.volume = 0.5;
-
-// Use YouTube as actual source via a hidden iframe trick
-const ytFrame = document.getElementById('yt-player');
-ytFrame.src = 'https://www.youtube.com/embed/sWp1RKMpKMA?autoplay=0&loop=1&playlist=sWp1RKMpKMA&controls=1&rel=0';
-
+let ytPlayer;
 let isPlaying = false;
 
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: 'sWp1RKMpKMA',
+    playerVars: { autoplay: 0, loop: 1, playlist: 'sWp1RKMpKMA', controls: 0, disablekb: 1 },
+    events: {
+      onReady: (e) => e.target.setVolume(60)
+    }
+  });
+};
+
+const ytScript = document.createElement('script');
+ytScript.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(ytScript);
+
 document.getElementById('music-btn').addEventListener('click', () => {
+  if (!ytPlayer) return;
   const iconPlay  = document.getElementById('icon-play');
   const iconPause = document.getElementById('icon-pause');
-  const container = document.getElementById('yt-container');
 
-  if (!isPlaying) {
-    // Show the iframe visibly so user can interact (browser requires it)
-    container.style.cssText = 'position:fixed;bottom:80px;right:28px;width:280px;height:160px;z-index:199;border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4);';
-    ytFrame.src = 'https://www.youtube.com/embed/sWp1RKMpKMA?autoplay=1&loop=1&playlist=sWp1RKMpKMA&controls=1&rel=0&modestbranding=1';
-    iconPlay.style.display  = 'none';
-    iconPause.style.display = 'block';
-    isPlaying = true;
-  } else {
-    container.style.cssText = 'position:fixed;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;bottom:0;right:0;';
-    ytFrame.src = 'about:blank';
+  if (isPlaying) {
+    ytPlayer.pauseVideo();
     iconPlay.style.display  = 'block';
     iconPause.style.display = 'none';
-    isPlaying = false;
+  } else {
+    ytPlayer.playVideo();
+    iconPlay.style.display  = 'none';
+    iconPause.style.display = 'block';
   }
+  isPlaying = !isPlaying;
 });
 
 // ── COUNTDOWN ──
