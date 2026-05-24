@@ -127,13 +127,69 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    status.textContent = '✦ Thank you — we look forward to celebrating with you.';
+    status.textContent = '\u2756 Thank you \u2014 we look forward to celebrating with you.';
     status.style.color = '#6b1a2a';
     this.reset();
+
+    // Only prompt calendar if they are attending
+    if (payload.attendance === "Yes, I'll be there") {
+      setTimeout(() => addToCalendar(), 800);
+    }
   } catch {
     status.textContent = 'Something went wrong. Please try again.';
     status.style.color = '#c0392b';
   } finally {
-    btn.textContent = 'Send RSVP';
+    btn.textContent = 'Send RSVP \uD83E\uDEB7';
   }
 });
+
+// ── ADD TO CALENDAR ──
+function addToCalendar() {
+  const title       = "Jason & Hozi's Wedding";
+  const location    = 'Villa by the Edge Glasshouse, Wattala';
+  const description = "We can't wait to celebrate with you!";
+  const start       = '20260808T000000';
+  const end         = '20260808T235900';
+  const startUTC    = '20260808T000000Z';
+  const endUTC      = '20260808T235900Z';
+
+  const ua = navigator.userAgent || '';
+  const isAndroid = /android/i.test(ua);
+  const isIOS     = /iphone|ipad|ipod/i.test(ua);
+
+  if (isAndroid) {
+    // Google Calendar
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+      `&text=${encodeURIComponent(title)}` +
+      `&dates=${startUTC}/${endUTC}` +
+      `&details=${encodeURIComponent(description)}` +
+      `&location=${encodeURIComponent(location)}`;
+    window.open(url, '_blank');
+  } else {
+    // iOS + desktop → .ics download (opens Apple Calendar on iPhone)
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Jason & Hozi Wedding//EN',
+      'BEGIN:VEVENT',
+      `DTSTART:${start}`,
+      `DTEND:${end}`,
+      `SUMMARY:${title}`,
+      `DESCRIPTION:${description}`,
+      `LOCATION:${location}`,
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'jason-hozi-wedding.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
