@@ -1001,6 +1001,40 @@ section {
   min-height: 24px;
 }
 
+/* ── RSVP BUTTON ── */
+.rsvp-btn {
+  display: inline-block;
+  padding: 15px 52px;
+  background: transparent;
+  color: var(--burgundy-dk);
+  border: 1px solid var(--burgundy-dk);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s;
+  margin-top: 8px;
+}
+
+.rsvp-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--burgundy-dk);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+
+.rsvp-btn span { position: relative; z-index: 1; }
+.rsvp-btn:hover { color: var(--silver-lt); }
+.rsvp-btn:hover::before { transform: scaleX(1); }
+
 /* ── MUSIC PLAYER ── */
 #music-player {
   position: fixed;
