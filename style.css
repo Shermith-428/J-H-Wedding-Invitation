@@ -1001,6 +1001,23 @@ section {
   min-height: 24px;
 }
 
+/* ── RSVP EMBED ── */
+.rsvp-embed {
+  max-width: 760px;
+  margin: 0 auto;
+  border: 1px solid rgba(107,26,42,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.rsvp-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: 900px;
+  border: none;
+}
+
 /* ── RSVP BUTTON ── */
 .rsvp-btn {
   display: inline-block;
