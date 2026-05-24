@@ -165,8 +165,8 @@ function addToCalendar() {
       `&details=${encodeURIComponent(description)}` +
       `&location=${encodeURIComponent(location)}`;
     window.open(url, '_blank');
-  } else {
-    // iOS + desktop → .ics download (opens Apple Calendar on iPhone)
+  } else if (isIOS) {
+    // iOS → .ics download (opens Apple Calendar)
     const ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
