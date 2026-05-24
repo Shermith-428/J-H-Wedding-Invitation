@@ -584,7 +584,7 @@ section {
 .bubble-stage {
   position: relative;
   width: 100%;
-  height: 820px;
+  height: 1400px;
   overflow: hidden;
 }
 
@@ -674,50 +674,47 @@ section {
   80%      { transform: translate(-4px,-26px) rotate(-0.5deg); }
 }
 
-.bubble:nth-child(1)  { top: 8%;  left: 4%;  animation: floatA 7s ease-in-out infinite; }
-.bubble:nth-child(2)  { top: 5%;  left: 32%; animation: floatB 9s ease-in-out infinite 1s; }
-.bubble:nth-child(3)  { top: 12%; left: 60%; animation: floatC 6s ease-in-out infinite 0.5s; }
-.bubble:nth-child(4)  { top: 44%; left: 14%; animation: floatD 8s ease-in-out infinite 2s; }
-.bubble:nth-child(5)  { top: 42%; left: 42%; animation: floatA 10s ease-in-out infinite 1.5s; }
-.bubble:nth-child(6)  { top: 48%; left: 72%; animation: floatB 7s ease-in-out infinite 3s; }
-.bubble:nth-child(7)  { top: 76%; left: 28%; animation: floatC 9s ease-in-out infinite 0.8s; }
-.bubble:nth-child(8)  { top: 76%; left: 58%; animation: floatD 8s ease-in-out infinite 1.2s; }
-.bubble:nth-child(9)  { top: 10%; left: 82%; animation: floatA 11s ease-in-out infinite 2.5s; }
-.bubble:nth-child(10) { top: 60%; left: 2%;  animation: floatB 9s ease-in-out infinite 0.3s; }
+.bubble:nth-child(1)  { top:  2%; left:  2%;  animation: floatA  7s ease-in-out infinite 0s; }
+.bubble:nth-child(2)  { top:  2%; left: 32%;  animation: floatB  9s ease-in-out infinite 1s; }
+.bubble:nth-child(3)  { top:  3%; left: 60%;  animation: floatC  6s ease-in-out infinite 0.5s; }
+.bubble:nth-child(4)  { top:  2%; left: 80%;  animation: floatD  8s ease-in-out infinite 2s; }
+.bubble:nth-child(5)  { top: 18%; left:  8%;  animation: floatB  9s ease-in-out infinite 1.5s; }
+.bubble:nth-child(6)  { top: 18%; left: 36%;  animation: floatC  7s ease-in-out infinite 0.8s; }
+.bubble:nth-child(7)  { top: 18%; left: 62%;  animation: floatA 10s ease-in-out infinite 3s; }
+.bubble:nth-child(8)  { top: 18%; left: 84%;  animation: floatD  8s ease-in-out infinite 1.2s; }
+.bubble:nth-child(9)  { top: 36%; left:  2%;  animation: floatC  9s ease-in-out infinite 2.5s; }
+.bubble:nth-child(10) { top: 36%; left: 28%;  animation: floatA  7s ease-in-out infinite 0.3s; }
+.bubble:nth-child(11) { top: 36%; left: 56%;  animation: floatB  8s ease-in-out infinite 1.8s; }
+.bubble:nth-child(12) { top: 36%; left: 80%;  animation: floatD  6s ease-in-out infinite 0.6s; }
+.bubble:nth-child(13) { top: 54%; left:  6%;  animation: floatA  9s ease-in-out infinite 2s; }
+.bubble:nth-child(14) { top: 54%; left: 32%;  animation: floatC  7s ease-in-out infinite 1s; }
+.bubble:nth-child(15) { top: 54%; left: 60%;  animation: floatB 10s ease-in-out infinite 3.5s; }
+.bubble:nth-child(16) { top: 54%; left: 82%;  animation: floatD  8s ease-in-out infinite 0.4s; }
+.bubble:nth-child(17) { top: 70%; left:  2%;  animation: floatB  7s ease-in-out infinite 1.2s; }
+.bubble:nth-child(18) { top: 70%; left: 28%;  animation: floatA  9s ease-in-out infinite 2.8s; }
+.bubble:nth-child(19) { top: 70%; left: 56%;  animation: floatC  6s ease-in-out infinite 0.9s; }
+.bubble:nth-child(20) { top: 70%; left: 80%;  animation: floatD  8s ease-in-out infinite 1.6s; }
+.bubble:nth-child(21) { top: 84%; left:  6%;  animation: floatC  9s ease-in-out infinite 0.2s; }
+.bubble:nth-child(22) { top: 84%; left: 32%;  animation: floatA  7s ease-in-out infinite 3.2s; }
+.bubble:nth-child(23) { top: 84%; left: 58%;  animation: floatB  8s ease-in-out infinite 1.4s; }
+.bubble:nth-child(24) { top: 84%; left: 82%;  animation: floatD  6s ease-in-out infinite 2.2s; }
+.bubble:nth-child(25) { top: 94%; left: 10%;  animation: floatA  9s ease-in-out infinite 0.7s; }
+.bubble:nth-child(26) { top: 94%; left: 40%;  animation: floatC  7s ease-in-out infinite 1.9s; }
+.bubble:nth-child(27) { top: 94%; left: 68%;  animation: floatB  8s ease-in-out infinite 3s; }
 
 /* responsive bubble stage */
 @media (max-width: 768px) {
-  .bubble-stage { height: 720px; }
-  .bubble[data-size="large"]  { --d: 160px; }
-  .bubble[data-size="medium"] { --d: 120px; }
-  .bubble[data-size="small"]  { --d: 85px; }
-  .bubble:nth-child(1)  { top: 2%;  left: 2%; }
-  .bubble:nth-child(2)  { top: 2%;  left: 36%; }
-  .bubble:nth-child(3)  { top: 6%;  left: 66%; }
-  .bubble:nth-child(4)  { top: 30%; left: 8%; }
-  .bubble:nth-child(5)  { top: 30%; left: 40%; }
-  .bubble:nth-child(6)  { top: 30%; left: 70%; }
-  .bubble:nth-child(7)  { top: 58%; left: 4%; }
-  .bubble:nth-child(8)  { top: 58%; left: 36%; }
-  .bubble:nth-child(9)  { top: 58%; left: 66%; }
-  .bubble:nth-child(10) { top: 82%; left: 24%; }
+  .bubble-stage { height: 1600px; }
+  .bubble[data-size="large"]  { --d: 140px; }
+  .bubble[data-size="medium"] { --d: 105px; }
+  .bubble[data-size="small"]  { --d: 75px; }
 }
 
 @media (max-width: 480px) {
-  .bubble-stage { height: 680px; }
-  .bubble[data-size="large"]  { --d: 120px; }
-  .bubble[data-size="medium"] { --d: 95px; }
-  .bubble[data-size="small"]  { --d: 70px; }
-  .bubble:nth-child(1)  { top: 1%;  left: 2%; }
-  .bubble:nth-child(2)  { top: 1%;  left: 38%; }
-  .bubble:nth-child(3)  { top: 4%;  left: 68%; }
-  .bubble:nth-child(4)  { top: 26%; left: 4%; }
-  .bubble:nth-child(5)  { top: 26%; left: 38%; }
-  .bubble:nth-child(6)  { top: 26%; left: 68%; }
-  .bubble:nth-child(7)  { top: 52%; left: 2%; }
-  .bubble:nth-child(8)  { top: 52%; left: 36%; }
-  .bubble:nth-child(9)  { top: 52%; left: 66%; }
-  .bubble:nth-child(10) { top: 76%; left: 20%; }
+  .bubble-stage { height: 1800px; }
+  .bubble[data-size="large"]  { --d: 110px; }
+  .bubble[data-size="medium"] { --d: 85px; }
+  .bubble[data-size="small"]  { --d: 62px; }
 }
 
 /* ── RSVP ── */
