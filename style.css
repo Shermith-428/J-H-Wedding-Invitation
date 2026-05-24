@@ -950,6 +950,87 @@ img.emoji {
   display: inline-block;
 }
 
+/* ── SWAN DIVIDER ── */
+.swan-divider {
+  background: linear-gradient(to bottom, #fff 0%, #f0e6d3 40%, #d4c4a8 100%);
+  padding: 40px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.swan-scene {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.swan {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(212,175,138,0.4));
+}
+
+.swan-left  { animation: swanBobLeft  4s ease-in-out infinite; }
+.swan-right { animation: swanBobRight 4s ease-in-out infinite 0.5s; }
+
+@keyframes swanBobLeft {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-10px) rotate(1deg); }
+}
+@keyframes swanBobRight {
+  0%,100% { transform: translateY(0) rotate(2deg); }
+  50%      { transform: translateY(-10px) rotate(-1deg); }
+}
+
+.swan-heart {
+  width: 48px;
+  height: auto;
+  margin: 0 -10px 28px;
+  animation: swanHeartPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(212,175,138,0.6));
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+@keyframes swanHeartPulse {
+  0%,100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.2) translateY(-6px); }
+}
+
+.swan-water {
+  background: linear-gradient(to bottom, #c8b89a, #a89070);
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.water-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  animation: rippleOut 3s ease-out infinite;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.r1 { left: 30%; width: 80px;  height: 20px; animation-delay: 0s; }
+.r2 { left: 50%; width: 120px; height: 28px; animation-delay: 1s; }
+.r3 { left: 70%; width: 80px;  height: 20px; animation-delay: 2s; }
+
+@keyframes rippleOut {
+  0%   { transform: translate(-50%,-50%) scale(0); opacity: 0.8; }
+  100% { transform: translate(-50%,-50%) scale(2.5); opacity: 0; }
+}
+
+@media (max-width: 480px) {
+  .swan { width: 110px; }
+  .swan-heart { width: 34px; margin-bottom: 18px; }
+}
+
 /* ── FOOTER ── */
 footer {
   background: var(--burgundy-dk);
