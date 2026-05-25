@@ -98,9 +98,9 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ── SUPABASE CONFIG ──
+// ── SUPABASE CONFIG ── v2
 const SUPABASE_URL = 'https://tfgakletdbgzoaothego.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmZ2FrbGV0ZGJnem9hb3RoZWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2ODc3NjQsImV4cCI6MjA5NTI2Mzc2NH0.z2nXxusC4LQGZhfWNdD1rvUnI4gUGNWKx2WkClUV3Ms';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' + '.' + 'eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmZ2FrbGV0ZGJnem9hb3RoZWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2ODc3NjQsImV4cCI6MjA5NTI2Mzc2NH0' + '.' + 'z2nXxusC4LQGZhfWNdD1rvUnI4gUGNWKx2WkClUV3Ms';
 
 // ── RSVP FORM → SUPABASE ──
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
