@@ -482,14 +482,16 @@
       const declined  = allData.filter(r => r.attendance === "Sorry, can't make it");
       const afar      = allData.filter(r => r.attendance === "Celebrating from afar");
 
-      // Count unique guests across all attending entries
+      // Count unique guests - party_names contains all members including submitter
+      // If party_names is filled, use that count. If empty, count just the submitter.
       const allGuestNames = new Set();
       attending.forEach(r => {
-        if (r.name) allGuestNames.add(r.name.trim().toLowerCase());
-        if (r.party_names) {
+        if (r.party_names && r.party_names.trim()) {
           r.party_names.split(/[\n,]/).forEach(n => {
             if (n.trim()) allGuestNames.add(n.trim().toLowerCase());
           });
+        } else {
+          if (r.name) allGuestNames.add(r.name.trim().toLowerCase());
         }
       });
       const totalGuests = allGuestNames.size;
