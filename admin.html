@@ -482,16 +482,17 @@
       const declined  = allData.filter(r => r.attendance === "Sorry, can't make it");
       const afar      = allData.filter(r => r.attendance === "Celebrating from afar");
 
-      // Count total guests from party_names (count lines/commas + 1 for submitter)
-      let totalGuests = 0;
+      // Count unique guests across all attending entries
+      const allGuestNames = new Set();
       attending.forEach(r => {
-        if (r.party_names && r.party_names.trim()) {
-          const lines = r.party_names.split(/[\n,]/).filter(l => l.trim());
-          totalGuests += lines.length;
-        } else {
-          totalGuests += 1;
+        if (r.name) allGuestNames.add(r.name.trim().toLowerCase());
+        if (r.party_names) {
+          r.party_names.split(/[\n,]/).forEach(n => {
+            if (n.trim()) allGuestNames.add(n.trim().toLowerCase());
+          });
         }
       });
+      const totalGuests = allGuestNames.size;
 
       document.getElementById('stat-total').textContent     = allData.length;
       document.getElementById('stat-attending').textContent = attending.length;

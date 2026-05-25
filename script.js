@@ -122,22 +122,52 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
   };
 
   try {
-    // Check for duplicate name or phone
-    const check = await fetch(
-      `${SUPABASE_URL}/rest/v1/rsvps?or=(phone.eq.${encodeURIComponent(payload.phone)},name.ilike.${encodeURIComponent(payload.name)})&select=id`,
-      {
-        headers: {
-          'apikey':        SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`
-        }
+    // Fetch all existing RSVPs to check for duplicates
+    const check = await fetch(`${SUPABASE_URL}/rest/v1/rsvps?select=name,party_names,phone`, {
+      headers: {
+        'apikey':        SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
       }
-    );
+    });
     const existing = await check.json();
-    if (existing.length > 0) {
-      status.textContent = 'An RSVP has already been submitted with this name or phone number.';
+
+    // Collect all known names (submitter + party members)
+    const allKnownNames = new Set();
+    const allKnownPhones = new Set();
+    existing.forEach(r => {
+      if (r.name) allKnownNames.add(r.name.trim().toLowerCase());
+      if (r.phone) allKnownPhones.add(r.phone.trim());
+      if (r.party_names) {
+        r.party_names.split(/[\n,]/).forEach(n => {
+          if (n.trim()) allKnownNames.add(n.trim().toLowerCase());
+        });
+      }
+    });
+
+    // Check if submitter name or phone already exists
+    if (allKnownPhones.has(payload.phone.trim())) {
+      status.textContent = 'This phone number has already submitted an RSVP.';
       status.style.color = '#c0392b';
       btn.textContent = 'Send RSVP \uD83E\uDEB7';
       return;
+    }
+    if (allKnownNames.has(payload.name.trim().toLowerCase())) {
+      status.textContent = 'This name has already been included in an RSVP.';
+      status.style.color = '#c0392b';
+      btn.textContent = 'Send RSVP \uD83E\uDEB7';
+      return;
+    }
+
+    // Check party members against known names
+    if (payload.party_names) {
+      const newPartyNames = payload.party_names.split(/[\n,]/).map(n => n.trim().toLowerCase()).filter(Boolean);
+      const dupName = newPartyNames.find(n => allKnownNames.has(n));
+      if (dupName) {
+        status.textContent = `"${dupName}" has already been included in another RSVP.`;
+        status.style.color = '#c0392b';
+        btn.textContent = 'Send RSVP \uD83E\uDEB7';
+        return;
+      }
     }
 
     const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps`, {
