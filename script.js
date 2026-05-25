@@ -122,6 +122,24 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
   };
 
   try {
+    // Check for duplicate name or phone
+    const check = await fetch(
+      `${SUPABASE_URL}/rest/v1/rsvps?or=(phone.eq.${encodeURIComponent(payload.phone)},name.ilike.${encodeURIComponent(payload.name)})&select=id`,
+      {
+        headers: {
+          'apikey':        SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        }
+      }
+    );
+    const existing = await check.json();
+    if (existing.length > 0) {
+      status.textContent = 'An RSVP has already been submitted with this name or phone number.';
+      status.style.color = '#c0392b';
+      btn.textContent = 'Send RSVP \uD83E\uDEB7';
+      return;
+    }
+
     const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps`, {
       method:  'POST',
       headers: {
