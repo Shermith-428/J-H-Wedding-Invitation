@@ -98,9 +98,11 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ── RSVP FORM → GOOGLE SHEETS ──
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+// ── SUPABASE CONFIG ──
+const SUPABASE_URL = 'https://tfgakletdbgzoaothego.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_WJiU-AsxCDhMu73XS5YQ_A_tnDmLxb6';
 
+// ── RSVP FORM → SUPABASE ──
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
   e.preventDefault();
   const status = document.getElementById('form-status');
@@ -116,22 +118,27 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
     attendance:  data.get('attendance'),
     address:     data.get('address'),
     phone:       data.get('phone'),
-    children:    data.get('children'),
-    timestamp:   new Date().toLocaleString()
+    children:    data.get('children')
   };
 
   try {
-    await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode:   'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps`, {
+      method:  'POST',
+      headers: {
+        'apikey':        SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type':  'application/json',
+        'Prefer':        'return=minimal'
+      },
       body: JSON.stringify(payload)
     });
+
+    if (!res.ok) throw new Error();
+
     status.textContent = '\u2756 Thank you \u2014 we look forward to celebrating with you.';
     status.style.color = '#6b1a2a';
     this.reset();
 
-    // Only prompt calendar if they are attending
     if (payload.attendance === "Yes, I'll be there") {
       setTimeout(() => addToCalendar(), 800);
     }
