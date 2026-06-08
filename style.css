@@ -2,15 +2,22 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --burgundy:    #950529;
-  --burgundy-dk: #400A16;
-  --burgundy-lt: #7a0420;
+  --crimson:     #950529;
+  --crimson-dk:  #6b0318;
   --green-dk:    #113c0d;
   --green-lt:    #1a5212;
+  --sand:        #d1c2ab;
+  --sand-lt:     #ede4d8;
+  --cream:       #f5efe6;
+  --black:       #010513;
+  --text-dark:   #010513;
+
+  /* map old vars to new for compatibility */
+  --burgundy:    #950529;
+  --burgundy-dk: #010513;
+  --burgundy-lt: #6b0318;
   --silver:      #d1c2ab;
   --silver-lt:   #ede4d8;
-  --cream:       #f5efe6;
-  --text-dark:   #010513;
 }
 
 html { scroll-behavior: smooth; }
@@ -92,13 +99,13 @@ body {
   background: rgba(1,5,19,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(209,194,171,0.12);
+  border-bottom: 1px solid rgba(209,194,171,0.15);
   transition: all 0.4s;
 }
 
 #navbar.scrolled {
   background: rgba(1,5,19,0.98);
-  border-bottom-color: rgba(209,194,171,0.2);
+  border-bottom-color: rgba(149,5,41,0.4);
 }
 
 .nav-inner {
@@ -217,7 +224,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(150deg, #010513 0%, #400A16 45%, #113c0d 100%);
+  background: linear-gradient(150deg, #010513 0%, #950529 50%, #113c0d 100%);
   overflow: hidden;
   z-index: 1;
 }
@@ -236,7 +243,7 @@ body {
 .home-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 60%, transparent 30%, rgba(1,5,19,0.7) 100%);
+  background: radial-gradient(ellipse at 50% 60%, transparent 30%, rgba(1,5,19,0.75) 100%);
 }
 
 .home-content {
@@ -398,8 +405,8 @@ body {
   flex: 1;
   max-width: 160px;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--silver));
-  opacity: 0.35;
+  background: linear-gradient(to right, transparent, #d1c2ab);
+  opacity: 0.4;
 }
 
 .heart-divider.burgundy .hd-line {
@@ -440,7 +447,7 @@ section {
   font-size: 0.6rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  color: var(--burgundy);
+  color: #113c0d;
   margin-bottom: 12px;
 }
 
@@ -449,7 +456,7 @@ section {
   font-size: clamp(2rem, 5vw, 3.4rem);
   font-weight: 300;
   font-style: italic;
-  color: var(--burgundy-dk);
+  color: #950529;
 }
 
 .divider-line {
@@ -460,7 +467,7 @@ section {
 }
 
 /* ── OUR STORY ── */
-#story { background: var(--cream); }
+#story { background: #f5efe6; }
 
 .story-intro {
   max-width: 560px;
@@ -468,7 +475,7 @@ section {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   font-style: italic;
-  color: var(--burgundy);
+  color: #113c0d;
   line-height: 1.85;
 }
 
@@ -505,13 +512,13 @@ section {
   transform: translateX(-50%);
   width: 34px;
   height: 34px;
-  background: var(--burgundy-dk);
-  border: 1.5px solid var(--silver);
+  background: #010513;
+  border: 1.5px solid #d1c2ab;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--silver);
+  color: #d1c2ab;
   font-size: 0.75rem;
   z-index: 2;
   transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
@@ -519,8 +526,8 @@ section {
 
 .timeline-item:hover .timeline-dot {
   transform: translateX(-50%) scale(1.25);
-  background: var(--burgundy);
-  box-shadow: 0 0 20px rgba(212,175,138,0.3);
+  background: #950529;
+  box-shadow: 0 0 20px rgba(149,5,41,0.4);
 }
 
 .timeline-card {
@@ -553,7 +560,7 @@ section {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.3rem;
   font-weight: 400;
-  color: var(--burgundy-dk);
+  color: #950529;
   margin-bottom: 10px;
 }
 
@@ -660,7 +667,7 @@ section {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.25rem;
   font-style: italic;
-  color: var(--burgundy);
+  color: #113c0d;
 }
 
 /* ── GALLERY GRID ── */
@@ -785,7 +792,7 @@ img.emoji {
 /* ── FOOTER ── */
 footer {
   background: #010513;
-  color: var(--silver);
+  color: #d1c2ab;
   text-align: center;
   padding: 52px 24px 36px;
   position: relative;
