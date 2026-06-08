@@ -573,12 +573,10 @@ section {
 }
 
 .story-break {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  color: var(--burgundy);
-  line-height: 2;
-  margin: 10px 0;
+  font-size: 0.8rem;
+  line-height: 1.95;
+  color: #5a3a3a;
+  margin: 8px 0;
 }
 
 .proposal-chat {
