@@ -561,10 +561,6 @@ section {
   color: #5a3a3a;
 }
 
-.timeline-card mark {
-  font-weight: 600;
-}
-
 .proposal-quote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
