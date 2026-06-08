@@ -98,11 +98,23 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ── SUPABASE CONFIG ── v2
-const SUPABASE_URL = 'https://tfgakletdbgzoaothego.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' + '.' + 'eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmZ2FrbGV0ZGJnem9hb3RoZWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2ODc3NjQsImV4cCI6MjA5NTI2Mzc2NH0' + '.' + 'z2nXxusC4LQGZhfWNdD1rvUnI4gUGNWKx2WkClUV3Ms';
+// ── FIREBASE CONFIG ──
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-// ── RSVP FORM → SUPABASE ──
+const firebaseConfig = {
+  apiKey:            'AIzaSyAdcmp4ETuFCSEQppAVYqMC0U_ujQE7Q44',
+  authDomain:        'wedding-2468a.firebaseapp.com',
+  projectId:         'wedding-2468a',
+  storageBucket:     'wedding-2468a.firebasestorage.app',
+  messagingSenderId: '681917384185',
+  appId:             '1:681917384185:web:132f16900b831d197de928'
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ── RSVP FORM → FIRESTORE ──
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
   e.preventDefault();
   const status = document.getElementById('form-status');
@@ -118,83 +130,48 @@ document.getElementById('rsvp-form').addEventListener('submit', async function (
     attendance:  data.get('attendance'),
     address:     data.get('address'),
     phone:       data.get('phone'),
-    children:    data.get('children')
+    children:    data.get('children'),
+    submitted_at: new Date().toISOString()
   };
 
   try {
-    // Fetch all existing RSVPs to check for duplicates
-    const check = await fetch(`${SUPABASE_URL}/rest/v1/rsvps?select=name,party_names,phone`, {
-      headers: {
-        'apikey':        SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`
-      }
-    });
-    const existing = await check.json();
+    const rsvpsRef = collection(db, 'rsvps');
 
-    // Collect all known names (submitter + party members)
-    const allKnownNames = new Set();
-    const allKnownPhones = new Set();
-    existing.forEach(r => {
-      if (r.name) allKnownNames.add(r.name.trim().toLowerCase());
-      if (r.phone) allKnownPhones.add(r.phone.trim());
-      if (r.party_names) {
-        r.party_names.split(/[\n,]/).forEach(n => {
-          if (n.trim()) allKnownNames.add(n.trim().toLowerCase());
-        });
-      }
-    });
-
-    // Check if submitter name or phone already exists
-    if (allKnownPhones.has(payload.phone.trim())) {
+    // Check duplicate phone
+    const phoneQ = query(rsvpsRef, where('phone', '==', payload.phone.trim()));
+    const phoneSnap = await getDocs(phoneQ);
+    if (!phoneSnap.empty) {
       status.textContent = 'This phone number has already submitted an RSVP.';
       status.style.color = '#c0392b';
-      btn.textContent = 'Send RSVP \uD83E\uDEB7';
+      btn.textContent = 'Send RSVP 🪷';
       return;
     }
-    if (allKnownNames.has(payload.name.trim().toLowerCase())) {
-      status.textContent = 'This name has already been included in an RSVP.';
+
+    // Check duplicate name
+    const nameQ = query(rsvpsRef, where('name', '==', payload.name.trim()));
+    const nameSnap = await getDocs(nameQ);
+    if (!nameSnap.empty) {
+      status.textContent = 'This name has already submitted an RSVP.';
       status.style.color = '#c0392b';
-      btn.textContent = 'Send RSVP \uD83E\uDEB7';
+      btn.textContent = 'Send RSVP 🪷';
       return;
     }
 
-    // Check party members against known names
-    if (payload.party_names) {
-      const newPartyNames = payload.party_names.split(/[\n,]/).map(n => n.trim().toLowerCase()).filter(Boolean);
-      const dupName = newPartyNames.find(n => allKnownNames.has(n));
-      if (dupName) {
-        status.textContent = `"${dupName}" has already been included in another RSVP.`;
-        status.style.color = '#c0392b';
-        btn.textContent = 'Send RSVP \uD83E\uDEB7';
-        return;
-      }
-    }
+    await addDoc(rsvpsRef, payload);
 
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/rsvps`, {
-      method:  'POST',
-      headers: {
-        'apikey':        SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Content-Type':  'application/json',
-        'Prefer':        'return=minimal'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (!res.ok) throw new Error();
-
-    status.textContent = '\u2756 Thank you \u2014 we look forward to celebrating with you.';
+    status.textContent = '❖ Thank you — we look forward to celebrating with you.';
     status.style.color = '#6b1a2a';
     this.reset();
 
     if (payload.attendance === "Yes, I'll be there") {
       setTimeout(() => addToCalendar(), 800);
     }
-  } catch {
+  } catch (err) {
+    console.error(err);
     status.textContent = 'Something went wrong. Please try again.';
     status.style.color = '#c0392b';
   } finally {
-    btn.textContent = 'Send RSVP \uD83E\uDEB7';
+    btn.textContent = 'Send RSVP 🪷';
   }
 });
 
