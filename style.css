@@ -249,19 +249,6 @@
   100% { background-position: -200% center; }
 }
 
-/* ── 3D TILT ON TIMELINE CARDS ── */
-.timeline-card {
-  background: #fff;
-  border: 1px solid rgba(107,26,42,0.08);
-  padding: 28px 26px;
-  text-align: left;
-  flex: 1;
-  position: relative;
-  transition: transform 0.15s ease, box-shadow 0.3s;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
 /* ── VENUE SECTION ── */
 #venue { background: #010513; }
 #venue .section-label { color: rgba(209,194,171,0.75); }
@@ -1154,7 +1141,11 @@ section {
   padding: 60px 0 80px;
 }
 
-#gallery .section-inner { padding: 0 24px; }
+#gallery .section-inner {
+  padding: 0 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 #gallery .section-label { color: rgba(212,175,138,0.75); }
 #gallery h2             { color: var(--silver-lt); }
 #gallery .divider-line  { background: linear-gradient(to right, transparent, rgba(212,175,138,0.4), transparent); }
