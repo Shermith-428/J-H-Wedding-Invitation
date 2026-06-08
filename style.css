@@ -572,13 +572,6 @@ section {
   padding-left: 12px;
 }
 
-.story-break {
-  font-size: 0.8rem;
-  line-height: 1.95;
-  color: #5a3a3a;
-  margin: 8px 0;
-}
-
 .proposal-chat {
   margin-top: 18px;
   display: flex;
