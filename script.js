@@ -1,5 +1,23 @@
+// ── FIREBASE CONFIG ──
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getFirestore, collection, addDoc, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey:            'AIzaSyAdcmp4ETuFCSEQppAVYqMC0U_ujQE7Q44',
+  authDomain:        'wedding-2468a.firebaseapp.com',
+  projectId:         'wedding-2468a',
+  storageBucket:     'wedding-2468a.firebasestorage.app',
+  messagingSenderId: '681917384185',
+  appId:             '1:681917384185:web:132f16900b831d197de928'
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
 // ── TWEMOJI ──
-twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+window.addEventListener('load', () => {
+  twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+});
 
 // ── MUSIC PLAYER ──
 const audio     = document.getElementById('audio-player');
@@ -97,22 +115,6 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-// ── FIREBASE CONFIG ──
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, collection, addDoc, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey:            'AIzaSyAdcmp4ETuFCSEQppAVYqMC0U_ujQE7Q44',
-  authDomain:        'wedding-2468a.firebaseapp.com',
-  projectId:         'wedding-2468a',
-  storageBucket:     'wedding-2468a.firebasestorage.app',
-  messagingSenderId: '681917384185',
-  appId:             '1:681917384185:web:132f16900b831d197de928'
-};
-
-const app = initializeApp(firebaseConfig);
-const db  = getFirestore(app);
 
 // ── RSVP FORM → FIRESTORE ──
 document.getElementById('rsvp-form').addEventListener('submit', async function (e) {
