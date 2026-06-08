@@ -746,13 +746,13 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(61,10,20,0.9);
+  background: linear-gradient(135deg, #010513 0%, #950529 60%, #113c0d 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212,175,138,0.25);
+  border: 1px solid rgba(209,194,171,0.3);
   padding: 10px 16px 10px 10px;
   border-radius: 50px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 24px rgba(1,5,19,0.5), 0 0 0 1px rgba(149,5,41,0.2);
   transition: all 0.3s;
 }
 
@@ -760,25 +760,25 @@ section {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: none;
-  background: rgba(212,175,138,0.15);
-  color: var(--silver);
+  border: 1px solid rgba(209,194,171,0.4);
+  background: rgba(149,5,41,0.35);
+  color: #d1c2ab;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, border-color 0.3s;
   flex-shrink: 0;
 }
 
-#music-btn:hover { background: rgba(212,175,138,0.3); }
+#music-btn:hover { background: rgba(17,60,13,0.6); border-color: #d1c2ab; }
 
 #music-label {
   font-size: 0.62rem;
   letter-spacing: 0.12em;
-  color: var(--silver);
+  color: #d1c2ab;
   white-space: nowrap;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* ── TWEMOJI ── */
