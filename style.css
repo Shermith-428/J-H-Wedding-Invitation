@@ -561,17 +561,6 @@ section {
   color: #5a3a3a;
 }
 
-.proposal-quote {
-  margin-top: 12px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--burgundy);
-  line-height: 1.8;
-  border-left: 2px solid var(--silver);
-  padding-left: 12px;
-}
-
 .proposal-chat {
   margin-top: 18px;
   display: flex;
