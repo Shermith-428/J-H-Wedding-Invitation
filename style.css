@@ -1,3 +1,34 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --crimson:     #950529;
+  --crimson-dk:  #6b0318;
+  --green-dk:    #113c0d;
+  --green-lt:    #1a5212;
+  --sand:        #d1c2ab;
+  --sand-lt:     #ede4d8;
+  --cream:       #f5efe6;
+  --black:       #010513;
+  --text-dark:   #010513;
+
+  /* map old vars to new for compatibility */
+  --burgundy:    #950529;
+  --burgundy-dk: #010513;
+  --burgundy-lt: #6b0318;
+  --silver:      #d1c2ab;
+  --silver-lt:   #ede4d8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
 /* ── ENVELOPE INTRO ── */
 #envelope-overlay {
   position: fixed;
@@ -460,38 +491,6 @@
   .itin-item:nth-child(even) .itin-card { order: 0; grid-column: 2; padding-left: 14px; text-align: left; flex-direction: row; }
   .venue-details { flex-direction: column; gap: 20px; }
   .venue-content { padding: 32px 22px; }
-}
-
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --crimson:     #950529;
-  --crimson-dk:  #6b0318;
-  --green-dk:    #113c0d;
-  --green-lt:    #1a5212;
-  --sand:        #d1c2ab;
-  --sand-lt:     #ede4d8;
-  --cream:       #f5efe6;
-  --black:       #010513;
-  --text-dark:   #010513;
-
-  /* map old vars to new for compatibility */
-  --burgundy:    #950529;
-  --burgundy-dk: #010513;
-  --burgundy-lt: #6b0318;
-  --silver:      #d1c2ab;
-  --silver-lt:   #ede4d8;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--cream);
-  color: var(--text-dark);
-  font-weight: 300;
-  overflow-x: hidden;
 }
 
 /* ── FLOATING HEARTS ── */
