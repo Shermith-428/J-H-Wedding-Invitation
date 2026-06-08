@@ -3,6 +3,8 @@ const envOverlay = document.getElementById('envelope-overlay');
 const envOpenBtn = document.getElementById('env-open-btn');
 const envelope   = document.querySelector('.envelope');
 
+document.body.style.overflow = 'hidden';
+
 envOpenBtn.addEventListener('click', () => {
   envOpenBtn.style.opacity = '0';
   envOpenBtn.style.pointerEvents = 'none';
@@ -12,26 +14,6 @@ envOpenBtn.addEventListener('click', () => {
     document.body.style.overflow = '';
   }, 1800);
 });
-
-document.body.style.overflow = 'hidden';
-
-// ── ENVELOPE INTRO ──
-const envBtn     = document.getElementById('env-open-btn');
-const envOverlay = document.getElementById('envelope-overlay');
-const envelope   = document.querySelector('.envelope');
-
-if (envBtn) {
-  envBtn.addEventListener('click', () => {
-    envelope.classList.add('opening');
-    envBtn.style.opacity = '0';
-    envBtn.style.pointerEvents = 'none';
-    setTimeout(() => {
-      envOverlay.classList.add('hide');
-      document.body.style.overflow = '';
-    }, 1800);
-  });
-  document.body.style.overflow = 'hidden';
-}
 
 // ── 3D TILT ON TIMELINE CARDS ──
 document.querySelectorAll('.timeline-card').forEach(card => {
