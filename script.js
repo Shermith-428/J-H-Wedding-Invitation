@@ -1,3 +1,20 @@
+// ── ENVELOPE INTRO ──
+const envOverlay = document.getElementById('envelope-overlay');
+const envOpenBtn = document.getElementById('env-open-btn');
+const envelope   = document.querySelector('.envelope');
+
+envOpenBtn.addEventListener('click', () => {
+  envOpenBtn.style.opacity = '0';
+  envOpenBtn.style.pointerEvents = 'none';
+  envelope.classList.add('opening');
+  setTimeout(() => {
+    envOverlay.classList.add('hide');
+    document.body.style.overflow = '';
+  }, 1800);
+});
+
+document.body.style.overflow = 'hidden';
+
 // ── TWEMOJI ──
 twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
 
