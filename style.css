@@ -561,6 +561,13 @@ section {
   color: #5a3a3a;
 }
 
+.timeline-card mark {
+  background: rgba(212,175,138,0.35);
+  color: var(--burgundy-dk);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
 .proposal-quote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
