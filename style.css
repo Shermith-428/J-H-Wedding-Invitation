@@ -562,14 +562,10 @@ section {
 }
 
 .timeline-card mark {
-  background: rgba(212,175,138,0.35);
-  color: var(--burgundy-dk);
-  padding: 0 3px;
-  border-radius: 2px;
+  font-weight: 600;
 }
 
-
-  margin-top: 12px;
+.proposal-quote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.95rem;
