@@ -3,8 +3,8 @@
 
 :root {
   --burgundy:    #6b1a2a;
-  --burgundy-dk: #3d0a14;
-  --burgundy-lt: #8c2438;
+  --burgundy-dk: #400A16;
+  --burgundy-lt: #6b1a2a;
   --silver:      #d4af8a;
   --silver-lt:   #f0e6d3;
   --cream:       #fdf6ee;
@@ -215,7 +215,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(150deg, var(--burgundy-dk) 0%, #5a1020 45%, var(--burgundy-lt) 100%);
+  background: linear-gradient(150deg, #400A16 0%, #400A16 45%, #6b1a2a 100%);
   overflow: hidden;
   z-index: 1;
 }
