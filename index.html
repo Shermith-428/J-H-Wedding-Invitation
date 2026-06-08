@@ -187,4 +187,96 @@
     </div>
   </section>
 
+  
+  <!-- HEART DIVIDER -->
+  <div class="heart-divider cream">
+    <span class="hd-line"></span>
+    <span class="hd-icon">♥</span>
+    <span class="hd-line"></span>
+  </div>
 
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="section-inner">
+      <p class="section-label reveal-up">RSVP</p>
+      <h2 class="reveal-up">Join Our Celebration</h2>
+      <div class="divider-line reveal-up"></div>
+      <p class="rsvp-note reveal-up">Kindly respond by <strong>1st July 2026</strong></p>
+
+      <form id="rsvp-form" class="reveal-up">
+
+        <div class="form-field">
+          <input type="text" name="name" id="f-name" placeholder=" " required />
+          <label for="f-name">What is your name? *</label>
+        </div>
+
+        <div class="form-field">
+          <textarea name="party_names" id="f-party" placeholder=" " rows="3" required></textarea>
+          <label for="f-party">Please list the full names of everyone in your party who is responding. *</label>
+        </div>
+
+        <div class="radio-group">
+          <p class="radio-label">Can you attend? *</p>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Yes, I'll be there" required />
+            <span class="radio-custom"></span>
+            <span class="radio-text">Yes, I'll be there 🥂</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Sorry, can't make it" />
+            <span class="radio-custom"></span>
+            <span class="radio-text">Sorry, can't make it 🌿</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="attendance" value="Celebrating from afar" />
+            <span class="radio-custom"></span>
+            <span class="radio-text">Celebrating from afar 🌸</span>
+          </label>
+        </div>
+
+        <div class="form-field">
+          <textarea name="address" id="f-address" placeholder=" " rows="2"></textarea>
+          <label for="f-address">Please confirm your current physical mailing address</label>
+        </div>
+
+        <div class="form-field">
+          <input type="tel" name="phone" id="f-phone" placeholder=" " required />
+          <label for="f-phone">Your mobile number *</label>
+        </div>
+
+        <div class="form-field">
+          <textarea name="children" id="f-children" placeholder=" " rows="2" required></textarea>
+          <label for="f-children">Are you bringing children? If so, please list their names and ages. *</label>
+        </div>
+
+        <button type="submit"><span>Send RSVP 🪷</span></button>
+        <p id="form-status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-heart" aria-hidden="true">🪷</div>
+    <p class="footer-names">Jason <span>&</span> Hosanna</p>
+    <p class="footer-date">08 · 08 · 2026 · Villa by the Edge Glasshouse, Wattala</p>
+    <div class="footer-line"></div>
+    <p class="footer-copy">Made with ♥</p>
+  </footer>
+
+  <!-- MUSIC PLAYER -->
+  <div id="music-player">
+    <button id="music-btn" title="Toggle Music">
+      <svg id="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <span id="music-label">Unforgettable - Michael Buble</span>
+  </div>
+  <audio id="audio-player" loop preload="none">
+    <source src="audio/Michael Buble - Unforgettable (Lyrics).mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>
