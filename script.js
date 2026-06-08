@@ -15,6 +15,21 @@ envOpenBtn.addEventListener('click', () => {
 
 document.body.style.overflow = 'hidden';
 
+// ── 3D TILT ON TIMELINE CARDS ──
+document.querySelectorAll('.timeline-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-4px)`;
+    card.style.boxShadow = `${-x * 12}px ${y * 12}px 32px rgba(149,5,41,0.12)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
+
 // ── TWEMOJI ──
 twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
 
