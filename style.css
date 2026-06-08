@@ -557,18 +557,12 @@ section {
 
 .timeline-card p {
   font-size: 0.8rem;
-  line-height: 1.6;
+  line-height: 1.95;
   color: #5a3a3a;
 }
 
-.timeline-card mark {
-  background: rgba(212,175,138,0.35);
-  color: var(--burgundy-dk);
-  padding: 0 3px;
-  border-radius: 2px;
-}
-
 .proposal-quote {
+  margin-top: 12px;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 0.95rem;
@@ -813,6 +807,16 @@ section {
 .bubble:nth-child(25) { animation: floatA  8s ease-in-out infinite 3.8s; }
 .bubble:nth-child(26) { animation: floatB  7s ease-in-out infinite 0.7s; }
 .bubble:nth-child(27) { animation: floatC  9s ease-in-out infinite 2s; }
+.bubble:nth-child(28) { animation: floatD  8s ease-in-out infinite 1.3s; }
+.bubble:nth-child(29) { animation: floatA  7s ease-in-out infinite 2.7s; }
+.bubble:nth-child(30) { animation: floatB  9s ease-in-out infinite 0.4s; }
+.bubble:nth-child(31) { animation: floatC  8s ease-in-out infinite 3.1s; }
+.bubble:nth-child(32) { animation: floatD  6s ease-in-out infinite 1.9s; }
+.bubble:nth-child(33) { animation: floatA  9s ease-in-out infinite 0.6s; }
+.bubble:nth-child(34) { animation: floatB  7s ease-in-out infinite 2.3s; }
+.bubble:nth-child(35) { animation: floatC  8s ease-in-out infinite 1.7s; }
+.bubble:nth-child(36) { animation: floatD  9s ease-in-out infinite 3.4s; }
+.bubble:nth-child(37) { animation: floatA  7s ease-in-out infinite 0.9s; }
 
 /* responsive bubble stage */
 @media (max-width: 768px) {
